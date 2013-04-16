@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>200</x>
+      <y>220</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>
+ResourceManager
+--
+-availableResources: List&lt;ResourceType,quantity&gt;
+-requestList
+--
++canSupply(resource): boolean
++storeResources(resourceList)
++requestResources(requestor,resourceList)
++supplyResources()
+--
+Responsibilities
+-- Allocate resources to builders
+-- Enqueue built resources to resource queue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>600</x>
+      <y>310</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ResourceType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>510</x>
+      <y>290</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>190</x>
+      <y>470</y>
+      <w>330</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>
+Builder
+--
+-requiredResources:List&lt;ResourceType,quantity&gt;
+-availableResources:List&lt;ResourceType,quantity&gt;
+-requestList:List&lt;ResourceType,quantity&gt;
+-requiredPower
+-outputResourceType
+-outputQuantity
+-resourceManager
+--
++arePrerequisitesFulfilled():boolean
++updateOutput()
++requestResources()
+--
+Responsibilities
+-- Check if prerequisites are fulfilled
+-- Provide output to ResourceManager
+-- Request for resources with ResourceManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>190</x>
+      <y>750</y>
+      <w>330</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>updateOutput() adds output resource to 
+ResourceManager. It cannot use its own output
+unless assigned by ResourceManager.
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>320</x>
+      <y>380</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Note</type>
+    <coordinates>
+      <x>60</x>
+      <y>220</y>
+      <w>140</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Other classes call
+requestResources()
+to ask for resources
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>220</x>
+      <y>0</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+Player
+--
+-resourceManager: ResourceManager
+--
+
+--
+Responsibilities
+-- Initialize resources
+-- Instruct manager to store purchased resources
+-- Instruct manager to supply resources (for sales
+or to builders)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>330</x>
+      <y>110</y>
+      <w>50</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;110;30;30</additional_attributes>
+  </element>
+</diagram>
